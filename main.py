@@ -53,6 +53,7 @@ class Game:
     def Navigation(self):
         while self.game_playing:
             print(f'This is your current location: {self.token_dict[self.my_player]}')
+            print("Type 'up' 'down' 'left' or 'right' to move")
             move = input("Where would you like the player to move?\n")
             if move == 'debug':
                 self.locationDebug()
@@ -168,6 +169,12 @@ class Game:
             print('The monster has caught up to you! YA DEAD')
             self.game_playing = False
 
+        restart = input("Would you like to play again? Type 'yes' or 'no'\n")
+        if restart == 'yes':
+            StartGame()
+        else: 
+            pass
+
     
 class Player:
     def __init__(self):
@@ -193,4 +200,9 @@ class Door:
         self.canLeave = False
 
 
-my_game = Game(CELLS)
+def StartGame():
+    start = input("Hello! Welcome to the dungeon game. Would you like to play? Type yes or no\n")
+    if start.lower() == 'yes':
+        my_game = Game(CELLS)
+    else:
+        pass
